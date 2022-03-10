@@ -30,7 +30,6 @@ public class LinkedList {
         }
     }
 
-
     public int size(){
        int count=0;
         Node n = head;
@@ -101,21 +100,36 @@ public class LinkedList {
             System.out.println("not that many nodes");
             return;
         }
+        Node f[] =new Node[size];
+        f[0] = head;
+        for (int x=1;x<size;x++){
+            f[x] = f[x-1].getNext();
+        }
         Node n = head;
         for (int x=0;x<size;x++){
             if(x == index-1 ){
                 n.setNext(new Node(i));
-
+            }else {
+                n.setNext(f[x]);
             }
-            if(n.getNext() == null){}else {
-                System.out.println(n.getValue());
-                n = n.getNext();
-            }
+            n = n.getNext();
         }
+
     }
 
     public void clear(){
         head = null;
+    }
+
+    public boolean contains(int i){
+        Node n = head;
+        for(int x = 0;x<size();x++){
+            if(n.getValue() == i){
+                return true;
+            }
+            n = n.getNext();
+        }
+        return false;
     }
 
     //get, get first and get last all in one
