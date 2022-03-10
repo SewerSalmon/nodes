@@ -1,5 +1,7 @@
 package com.company;
 
+import com.sun.source.tree.BreakTree;
+
 public class LinkedList {
     public Node head;
 
@@ -130,6 +132,62 @@ public class LinkedList {
             n = n.getNext();
         }
         return false;
+    }
+
+    public Node remove(int index){
+        int size = size();
+        Node removed= null;
+        if(index-1>size){
+            System.out.println("not that many nodes");
+            return null;
+        }
+        Node f[] =new Node[size];
+        f[0] = head;
+        for (int x=1;x<size;x++){
+            f[x] = f[x-1].getNext();
+        }
+        Node n = head;
+        for (int x=0;x<size;x++){
+            if(x == index-1 ){
+              removed = n.getNext();
+            }else {
+              n.setNext(f[x]);
+              n = n.getNext();
+            }
+
+        }
+    return removed;
+
+    }
+
+    public Node remove(){
+        int size = size()-1;
+        Node removed= head;
+        Node f[] =new Node[size];
+
+        f[0] = head.getNext();
+        for (int x=1;x<size;x++){
+            f[x] = f[x-1].getNext();
+        }
+        head = f[0];
+        Node n = head;
+        for (int x=0;x<size;x++){
+                n.setNext(f[x]);
+                n = n.getNext();
+        }
+
+        return removed;
+    }
+
+    public int indexOf(int i){
+        Node n = head;
+        for(int x = 0;x<size();x++){
+            if(n.getValue() == i){
+                return x+1;
+            }
+            n = n.getNext();
+        }
+        return -1;
     }
 
     //get, get first and get last all in one
