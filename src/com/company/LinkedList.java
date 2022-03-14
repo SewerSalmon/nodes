@@ -203,4 +203,29 @@ public class LinkedList {
         n.Display();
     }
 
+    public void outputTotal(){
+        int sum = 0;
+        Node n = head;
+        for(int y = 0;y<size()+1;y++){
+            sum = sum + n.getValue();
+            n = n.getNext();
+        }
+        System.out.println(sum);
+    }
+
+    public Node n;
+    public void resetNext(){
+        n = head;
+    }
+    public boolean HasNext(){
+        if(n.getNext() == null){return false;}else{return true;}
+    }
+    public Node getNext(){
+        return n.getNext();
+    }
+    public void isEmpty(){
+
+    }
+
+
 }
