@@ -224,7 +224,7 @@ public class LinkedList {
         return cursor.getNext();
     }
     public boolean isEmpty(){
-        if(cursor == null){return true;}else {return false}
+        if(cursor == null){return true;}else {return false;}
     }
 
 
