@@ -213,18 +213,18 @@ public class LinkedList {
         System.out.println(sum);
     }
 
-    public Node n;
+    public Node cursor = null;
     public void resetNext(){
-        n = head;
+        cursor = head;
     }
     public boolean HasNext(){
-        if(n.getNext() == null){return false;}else{return true;}
+        if(cursor.getNext() == null){return false;}else{return true;}
     }
     public Node getNext(){
-        return n.getNext();
+        return cursor.getNext();
     }
-    public void isEmpty(){
-
+    public boolean isEmpty(){
+        if(cursor == null){return true;}else {return false}
     }
 
 
