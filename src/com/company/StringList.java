@@ -31,7 +31,7 @@ public class StringList extends LinkedList {
         String sum = "";
         StringNode n = head;
         for(int y = 0;y<size()+1;y++){
-            sum = sum + n.getValue();
+            sum = sum + n.getValue()+" ";
             n = n.getNext();
         }
         System.out.println(sum);
