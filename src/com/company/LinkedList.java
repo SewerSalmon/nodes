@@ -4,15 +4,16 @@ import com.sun.source.tree.BreakTree;
 
 public class LinkedList {
     public Node head;
+    public Node cursor = null;
     public LinkedList(){
         head = null;
     }
     public LinkedList(int[] values){
         head = new Node(values[0]);
-        Node n = head;
+        resetNext();
         for (int x = 1;x<values.length;x++){
-          n.setNext(new Node(values[x]));
-          n = n.getNext();
+          cursor.setNext(new Node(values[x]));
+          cursor = cursor.getNext();
         }
     }
 
@@ -33,23 +34,22 @@ public class LinkedList {
 
     public int size(){
        int count=0;
-        Node n = head;
+       resetNext();
 
-       while (n.getNext()!=null){
+       while (HasNext()){
            count++;
-          n = n.getNext();
-
+           cursor = getNext();
        }
         return count;
     }
 
     public void add(int i){
-        Node n = head;
+        resetNext();
         int size = size();
         for (int x=0;x<size;x++){
-            n= n.getNext();
+            cursor= getNext();
         }
-        n.setNext(new Node(i));
+        cursor.setNext(new Node(i));
     }
 
     public void addFirst(int i){
@@ -61,10 +61,10 @@ public class LinkedList {
         }
         head = null;
         head = new Node(i);
-        Node f = head;
+        resetNext();
         for (int x=0;x<size;x++){
-           f.setNext(n[x]);
-           f = f.getNext();
+            cursor.setNext(n[x]);
+            cursor = getNext();
         }
     }
 
@@ -80,17 +80,17 @@ public class LinkedList {
             n[x] = n[x-1].getNext();
         }
         boolean done = false;
-        Node f = head;
+        resetNext();
         for (int x=0;x<size;x++){
             if(x == index-1 && !done){
-                f.setNext(new Node(i));
+                cursor.setNext(new Node(i));
                 done = true;
                 x = x-1;
 
             }else {
-                f.setNext(n[x]);
+                cursor.setNext(n[x]);
             }
-            f = f.getNext();
+            cursor = getNext();
 
         }
     }
@@ -106,14 +106,14 @@ public class LinkedList {
         for (int x=1;x<size;x++){
             f[x] = f[x-1].getNext();
         }
-        Node n = head;
+        resetNext();
         for (int x=0;x<size;x++){
             if(x == index-1 ){
-                n.setNext(new Node(i));
+                cursor.setNext(new Node(i));
             }else {
-                n.setNext(f[x]);
+                cursor.setNext(f[x]);
             }
-            n = n.getNext();
+            cursor = getNext();
         }
 
     }
@@ -123,12 +123,12 @@ public class LinkedList {
     }
 
     public boolean contains(int i){
-        Node n = head;
+        resetNext();
         for(int x = 0;x<size();x++){
-            if(n.getValue() == i){
+            if(cursor.getValue() == i){
                 return true;
             }
-            n = n.getNext();
+            cursor = getNext();
         }
         return false;
     }
@@ -145,13 +145,13 @@ public class LinkedList {
         for (int x=1;x<size;x++){
             f[x] = f[x-1].getNext();
         }
-        Node n = head;
+        resetNext();
         for (int x=0;x<size;x++){
             if(x == index-1 ){
-              removed = n.getNext();
+              removed = getNext();
             }else {
-              n.setNext(f[x]);
-              n = n.getNext();
+                cursor.setNext(f[x]);
+                cursor = getNext();
             }
 
         }
@@ -169,57 +169,58 @@ public class LinkedList {
             f[x] = f[x-1].getNext();
         }
         head = f[0];
-        Node n = head;
+        resetNext();
         for (int x=0;x<size;x++){
-                n.setNext(f[x]);
-                n = n.getNext();
+            cursor.setNext(f[x]);
+            cursor = getNext();
         }
 
         return removed;
     }
 
     public int indexOf(int i){
-        Node n = head;
+        resetNext();
         for(int x = 0;x<size();x++){
-            if(n.getValue() == i){
+            if(cursor.getValue() == i){
                 return x+1;
             }
-            n = n.getNext();
+            cursor = getNext();
         }
         return -1;
     }
 
     //get, get first and get last all in one
     public void Displayer(int where){
-        Node n = head;
+        resetNext();
         for(int x = 0; x<where-1;x++){
-            if(n.getNext() == null){
+            if(!HasNext()){
                 System.out.println("not that many nodes");
                 return;
             }else {
-                n = n.getNext();}
+                cursor = getNext();}
         }
 
-        n.Display();
+        cursor.Display();
     }
 
     public void outputTotal(){
         int sum = 0;
-        Node n = head;
+        resetNext();
         for(int y = 0;y<size()+1;y++){
-            sum = sum + n.getValue();
-            n = n.getNext();
+            sum = sum + cursor.getValue();
+            cursor = cursor.getNext();
         }
         System.out.println(sum);
     }
 
-    public Node cursor = null;
     public void resetNext(){
         cursor = head;
     }
     public boolean HasNext(){
-        if(cursor.getNext() == null){return false;}else{return true;}
+        return getNext() != null;
     }
+
+
     public Node getNext(){
         return cursor.getNext();
     }
