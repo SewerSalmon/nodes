@@ -190,17 +190,17 @@ public class LinkedList {
     }
 
     //get, get first and get last all in one
-    public void Displayer(int where){
+    public Node Displayer(int where){
         Node n = head;
         for(int x = 0; x<where-1;x++){
             if(n.getNext() == null){
                 System.out.println("not that many nodes");
-                return;
+                return null;
             }else {
                 n = n.getNext();}
         }
-
         n.Display();
+        return n;
     }
 
     public void outputTotal(){
@@ -224,7 +224,7 @@ public class LinkedList {
         return cursor.getNext();
     }
     public boolean isEmpty(){
-        if(cursor == null){return true;}else {return false;}
+        if(head == null){return true;}else {return false;}
     }
 
 
