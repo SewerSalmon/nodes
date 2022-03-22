@@ -10,7 +10,7 @@ public class Stack extends LinkedList{
     }
 
     public Node peek(){
-        return Displayer(1);
+        return Displayer(0);
     }
 
     public Node pop(){

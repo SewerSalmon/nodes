@@ -70,7 +70,7 @@ public class LinkedList {
 
     public void addIndex(int index,int i){
         int size = size();
-        if(index-1>size){
+        if(index>size){
             System.out.println("not that many nodes");
             return;
         }
@@ -82,7 +82,7 @@ public class LinkedList {
         boolean done = false;
         Node f = head;
         for (int x=0;x<size;x++){
-            if(x == index-1 && !done){
+            if(x == index && !done){
                 f.setNext(new Node(i));
                 done = true;
                 x = x-1;
@@ -97,7 +97,7 @@ public class LinkedList {
 
     public void set(int index,int i){
         int size = size();
-        if(index-1>size){
+        if(index>size){
             System.out.println("not that many nodes");
             return;
         }
@@ -108,7 +108,7 @@ public class LinkedList {
         }
         Node n = head;
         for (int x=0;x<size;x++){
-            if(x == index-1 ){
+            if(x == index ){
                 n.setNext(new Node(i));
             }else {
                 n.setNext(f[x]);
@@ -136,7 +136,7 @@ public class LinkedList {
     public Node remove(int index){
         int size = size();
         Node removed= null;
-        if(index-1>size){
+        if(index>size){
             System.out.println("not that many nodes");
             return null;
         }
@@ -147,7 +147,7 @@ public class LinkedList {
         }
         Node n = head;
         for (int x=0;x<size;x++){
-            if(x == index-1 ){
+            if(x == index ){
               removed = n.getNext();
             }else {
               n.setNext(f[x]);
@@ -192,7 +192,7 @@ public class LinkedList {
     //get, get first and get last all in one
     public Node Displayer(int where){
         Node n = head;
-        for(int x = 0; x<where-1;x++){
+        for(int x = 0; x<where;x++){
             if(n.getNext() == null){
                 System.out.println("not that many nodes");
                 return null;
