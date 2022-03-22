@@ -4,7 +4,6 @@ public class Stack extends LinkedList{
     public Stack(){
         super();
     }
-
     public void push(int n){
         addFirst(n);
     }

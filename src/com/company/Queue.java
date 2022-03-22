@@ -5,15 +5,9 @@ public class Queue extends LinkedList{
         super();
     }
 
-    public void enqueue(int n){
-        super.addIndex(size(),n);
-    }
+    public void enqueue(int n){addItem(n);}
 
-    public int dequeue(){
-       return remove(0).getValue();
-    }
+    public int dequeue(){return remove(0).getValue();}
 
-    public boolean isEmpty(){
-        return super.isEmpty();
-    }
+    public boolean isEmpty(){return super.isEmpty();}
 }
